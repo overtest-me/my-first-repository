@@ -1,0 +1,8 @@
+PASSED for 0 year (years): 1.0
+PASSED for 1 year (years): 1.05
+PASSED for 2 year (years): 1.05
+PASSED for 3 year (years): 1.12
+FAILED for 5 year (years): 1.15
+PASSED for 8 year (years): 1.3
+PASSED for 13 year (years): 1.5
+FAILED for 21 year (years): 1.5
