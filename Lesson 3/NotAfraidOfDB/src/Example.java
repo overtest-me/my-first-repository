@@ -13,10 +13,8 @@ public class Example {
         try (Connection connection = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
              Statement statement = connection.createStatement();) {
 
-            /* 03. Defining query string for obtaining all data from our DB
-            executing it and saving the result in the ResultSet object */
-            String myQuery = "SELECT * FROM test.company";
-            ResultSet result = statement.executeQuery(myQuery);
+            // 03. Executing query and saving the result in the ResultSet object
+            ResultSet result = statement.executeQuery("SELECT * FROM test.company");
 
             // 04. Iterating through all DB rows we have in the ResultSet object
             while (result.next()) {
@@ -29,7 +27,8 @@ public class Example {
                 boolean isProfitable = result.getBoolean("isProfitable");
 
                 // Output to the console to make sure that we got some data
-                System.out.println(String.format("ID: %s, Name: %s, Number of employees: %s, Is profitable: %s",
+                System.out.println(String.format("ID: %s, Name: %s," +
+                        "Number of employees: %s, Is profitable: %s",
                         id, name, numOfEmpl, isProfitable));
             }
 

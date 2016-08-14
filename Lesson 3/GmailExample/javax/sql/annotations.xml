@@ -1,0 +1,5 @@
+<root>
+    <item name='javax.sql.DataSource'>
+        <annotation name='java.lang.annotation.Deprecated'/>
+    </item>
+</root>
