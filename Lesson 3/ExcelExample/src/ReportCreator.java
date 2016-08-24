@@ -29,7 +29,8 @@ class ReportCreator {
     void createHeader()
     {
         // Titles of columns of our excel table
-        String [] titles = {"Test case #", "Years of experience", "Expected bonus", "Actual bonus", "Result"};
+        String [] titles = {"Test case #", "Years of experience",
+                "Expected bonus", "Actual bonus", "Result"};
 
         // Creating the top row (header of teable)
         row = spreadsheet.createRow(0);
@@ -51,9 +52,10 @@ class ReportCreator {
         }
     }
 
-    void writeTestCaseResult(int testNumber, int years, double expBonus, double actBonus, String result)
+    void writeTestCaseResult(int testNumber, int years, double expBonus,
+                             double actBonus, String result)
     {
-        // Creating a new row for a test and putting appropriate data in each column
+        // Creating a new row and putting appropriate data in each column
         row = spreadsheet.createRow(testNumber);
         row.createCell(0).setCellValue(testNumber);
         row.createCell(1).setCellValue(years);
@@ -63,8 +65,9 @@ class ReportCreator {
 
         CellStyle style = workbook.createCellStyle();
 
-        // Set cell foreground colour depends on test result: green or red
-        if(Objects.equals(result, "PASSED")) style.setFillForegroundColor(IndexedColors.GREEN.getIndex());
+        // Set cell foreground colour depends on test result
+        if(Objects.equals(result, "PASSED"))
+            style.setFillForegroundColor(IndexedColors.GREEN.getIndex());
         else style.setFillForegroundColor(IndexedColors.RED.getIndex());
 
         style.setFillPattern(CellStyle.SOLID_FOREGROUND);
@@ -74,7 +77,7 @@ class ReportCreator {
 
     void calculateSummary()
     {
-        // Create style for the summary row: bigger bold font, aligned center
+        // Style for the summary: bigger bold font, aligned center
         CellStyle summaryStyle = workbook.createCellStyle();
         Font font =  workbook.createFont();
         font.setBoldweight(Font.BOLDWEIGHT_BOLD);
@@ -90,8 +93,9 @@ class ReportCreator {
         // Merging cells for columns 0..3
         spreadsheet.addMergedRegion(new CellRangeAddress(9, 9, 0, 3));
 
-        // Defining cell with formula for calculating % of success for whole test run
-        String coverageFormula = "COUNTIF(E2:E9,\"PASSED\")/(COUNTIF(E2:E9,\"PASSED\")+COUNTIF(E2:E9,\"FAILED\"))";
+        // Defining cell with formula for calculating % of success
+        String coverageFormula =
+        "COUNTIF(E2:E9,\"PASSED\")/(COUNTIF(E2:E9,\"PASSED\")+COUNTIF(E2:E9,\"FAILED\"))";
         Cell finalResult = row.createCell(4);
         finalResult.setCellType(Cell.CELL_TYPE_FORMULA);
         finalResult.setCellFormula(coverageFormula);
@@ -112,3 +116,5 @@ class ReportCreator {
         }
     }
 }
+
+

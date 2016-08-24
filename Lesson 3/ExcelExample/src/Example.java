@@ -9,12 +9,11 @@ public class Example {
         // This string represents the name of our future report
         String reportName = "AutomationReport";
 
-        Employee employee = new Employee();
-
-        /* Create an object of our auxiliary class and create
-        and create title for our report table */
+        /* Create an object of our auxiliary class and create title for our report table */
         ReportCreator reportCreator = new ReportCreator();
         reportCreator.createHeader();
+
+        Employee employee = new Employee();
 
         try(
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(pathToInputFile)))))
@@ -45,4 +44,3 @@ public class Example {
         reportCreator.saveReport(reportName);
     }
 }
-
