@@ -21,17 +21,22 @@ class GmailReportSender {
 
     private Message message;
     private BodyPart messageBodyPart;
-    private static final String SENDER_EMAIL = "eto.shef@gmail.com";
-    private static final String SENDER_PASSWORD = "tekstolit1983";
 
+    // Gmail account credentials from whih we will send the report
+    private static final String SENDER_EMAIL = "your.email@gmail.com";
+    private static final String SENDER_PASSWORD = "yourPassword";
+
+    // Custom constructor which provides authentication to the SMTP server
     GmailReportSender()
     {
+        // Put parameters of Gmail SMTP server
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
 
+        // Login to the Gmail service with sender credentials
         Session session = Session.getInstance(props, new javax.mail.Authenticator()
         {
             protected PasswordAuthentication getPasswordAuthentication()
@@ -40,6 +45,7 @@ class GmailReportSender {
             }
         });
 
+        // Initialise message object
         message = new MimeMessage(session);
     }
 
@@ -60,7 +66,7 @@ class GmailReportSender {
         try {
             message.setSubject(String.format("%s (%s)", topic, dateFormat.format(new Date())));
             messageBodyPart = new MimeBodyPart();
-            messageBodyPart.setContent(messageBody, "text/html; charset=utf-8");
+            messageBodyPart.setText(messageBody);
         } catch (MessagingException e) {
             e.printStackTrace();
         }
@@ -68,6 +74,8 @@ class GmailReportSender {
 
     void addAttachment(String attachment)
     {
+        /* Multipart object which will contain an attachment
+        and will be added as a part of the message body */
         Multipart multipart = new MimeMultipart();
 
         try {
@@ -86,6 +94,7 @@ class GmailReportSender {
     void send()
     {
         try {
+            // Using the send() method of the static Transport class
             Transport.send(message);
             System.out.println("Automation report has been sent successfully...");
         } catch (MessagingException e) {
@@ -93,3 +102,6 @@ class GmailReportSender {
         }
     }
 }
+
+
+

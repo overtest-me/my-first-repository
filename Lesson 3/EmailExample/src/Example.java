@@ -14,7 +14,7 @@ public class Example {
 
         // Object for setting message parameters and eventually sending email
         GmailReportSender  gmailReport = new GmailReportSender();
-        gmailReport.setReceiver("camucenko@gmail.com");
+        gmailReport.setReceiver("manager.mail@gmail.com");
 
         Employee employee = new Employee();
 
@@ -50,3 +50,4 @@ public class Example {
         gmailReport.send();
     }
 }
+

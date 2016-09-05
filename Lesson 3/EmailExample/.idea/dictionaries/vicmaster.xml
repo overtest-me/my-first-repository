@@ -2,6 +2,8 @@
   <dictionary name="vicmaster">
     <words>
       <w>gmail</w>
+      <w>smtp</w>
+      <w>starttls</w>
       <w>xlsx</w>
     </words>
   </dictionary>
