@@ -1,0 +1,23 @@
+Here is the video streaming simulator which allows to manipulate by imaginary content for different types of users.
+
+ The main components are:
+
+    - Movie class which describes a typical movie with its title, category and MPAA rating.
+    Optionally a movie can have also HD version.
+    - VideoRepository class which simulates a server where all movies are stored. It allows us to upload and remove
+     movies and also to perform checks, if specific movie exists on server or not.
+    - Categories enum which contains lists of categories like action, comedy, thriller etc.
+    - MPAARatings enum which describes parental control types and age restrictions.
+
+    - User class which defines a template for user accounts which exist in our simulator (light, advanced
+    and premium). Typical user can play/stop a specific movie and also add it to bookmarks (or remove from there).
+    - UserCreator class which help us to create a new user of specific account.
+    - LightUser, AdvancedUser and PremiumUser classes which define specific restrictions for each user account:
+            - Light user can't play movies in HD quality and can't add any bookmarks;
+            - Advanced user can use bookmarks feature but still can't watch high definition video;
+            - Premium user has no restrictions, i.e. can watch HD and add movies to bookmarks as well.
+    - UserType enum which stores our account types (LIGHT, ADVANCED and PREMIUM).
+
+    - Custom exception classes (ContentAvailability, AgeRestriction, UserAccess) which are responsible for
+    handling situations when user tries to access non-existing content, not appropriate movie for his age or features
+    which aren't allowed for his account type.

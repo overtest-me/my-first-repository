@@ -1,0 +1,12 @@
+videoService\userProfile\UserCreator$1.class
+videoService\userProfile\UserCreator.class
+videoService\userProfile\PremiumUser.class
+videoService\videoData\MPAARatings.class
+videoService\ServiceResponseCodes.class
+videoService\videoData\Movie.class
+videoService\userProfile\UserType.class
+videoService\userProfile\LightUser.class
+videoService\userProfile\User.class
+videoService\videoData\Categories.class
+videoService\videoData\VideoRepository.class
+videoService\userProfile\AdvancedUser.class
